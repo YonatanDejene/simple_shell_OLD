@@ -44,7 +44,7 @@ void _setinf(info_t *info, char **av)
 }
 
 /**
- * _frinfo – Free info_t structure fields.
+ * _frinfo - Free info_t structure fields.
  * @info: Structure add.
  * @all: True.
  */

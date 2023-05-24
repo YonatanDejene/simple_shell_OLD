@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _strcpy – Copy str.
+ * _strcpy - Copy str.
  * @dest: Destination.
  * @src: Source.
  *
@@ -23,7 +23,7 @@ char *_strcpy(char *dest, char *src)
 }
 
 /**
- * str_dup – Doubles String.
+ * str_dup - Doubles String.
  * @str: String to be doubled.
  *
  * Return: Pointer.
@@ -46,7 +46,7 @@ char *str_dup(const char *str)
 }
 
 /**
- * _puts – Print given string.
+ * _puts - Print given string.
  * @str: String to be printed.
  *
  * Return: Void.
@@ -65,7 +65,7 @@ void _puts(char *str)
 }
 
 /**
- * _putchar – Writes charater.
+ * _putchar - Writes charater.
  * @c: Character to be written.
  *
  * Return: 1 if success, -1 is returned if not.

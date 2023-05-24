@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _inptbf – Buffers commands.
+ * _inptbf - Buffers commands.
  * @info: Param structure.
  * @buf: Add of buf.
  * @len: Add of len.
@@ -13,7 +13,7 @@ ssize_t _inptbf(info_t *info, char **buf, size_t *len)
 	ssize_t r = 0;
 	size_t len_p = 0;
 
-	if (!*len) 
+	if (!*len)
 	{
 		free(*buf);
 		*buf = NULL;
@@ -44,7 +44,7 @@ ssize_t _inptbf(info_t *info, char **buf, size_t *len)
 }
 
 /**
- * _gtinput – Gets line.
+ * _gtinput - Gets line.
  * @info: Parameter structure.
  *
  * Return: Bytes.
@@ -109,7 +109,7 @@ ssize_t _readbuf(info_t *info, char *buf, size_t *i)
 }
 
 /**
- * get_ln – Gets the next line.
+ * get_ln - Gets the next line.
  * @info: Parameter Structure.
  * @ptr: Address of pointer.
  * @length: Size of ptr.

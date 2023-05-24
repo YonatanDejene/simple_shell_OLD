@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * my_env – Print current environment.
+ * my_env - Print current environment.
  * @info: Structure containing potential arguments.
  * Return: 0
  */
@@ -12,9 +12,9 @@ int my_env(info_t *info)
 }
 
 /**
- * get_env – Get value of an environ variable.
+ * get_env - Get value of an environ variable.
  * @info: Structure containing potential arguments.
- *
+ * @name: Name.
  * Return: The value.
  */
 char *get_env(info_t *info, const char *name)
@@ -33,7 +33,7 @@ char *get_env(info_t *info, const char *name)
 }
 
 /**
- * my_stenv – Initialize or modify environmental variable.
+ * my_stenv - Initialize or modify environmental variable.
  * @info: Structure containing potential arguments.
  *  Return: 0
  */
@@ -50,7 +50,7 @@ int my_stenv(info_t *info)
 }
 
 /**
- * my_unstenv – Removes environmental variables.
+ * my_unstenv - Removes environmental variables.
  * @info: Structure containing potential arguments.
  * Return: 0.
  */
@@ -70,7 +70,7 @@ int my_unstenv(info_t *info)
 }
 
 /**
- * p_env_list – Populate environmental linked lists
+ * p_env_list - Populate environmental linked lists
  * @info: Structure containing potential arguments.
  * Return: 0.
  */

@@ -49,9 +49,9 @@ int msh(info_t *info, char **av)
  * @info: Parameter & return info structure.
  *
  * Return: -1 When builtin doesn’t exist,
- * 	0 When builtin executed successfully,
- * 	1 When builtin found but not successful,
- * 	2 When builtin signals exit().
+ * 0 When builtin executed successfully,
+ * 1 When builtin found but not successful,
+ * 2 When builtin signals exit().
  */
 int fnd_bltin(info_t *info)
 {
