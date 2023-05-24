@@ -1,14 +1,17 @@
 #include "main.h"
 
 /**
-* main - subtracts two intiger numbers
-* @number1: The first intiger to be added
-* @number2: The second integer to be added
+*main - subtracts two intiger numbers
+*@number1: The first intiger to be added
+*@number2: The second integer to be added
+*@Difference: Difference between number1 and number2
 *
-* Return: Returns difference of the two intigers
+*Return: Difference
 */
 
-int main(int number1, int number2)
+int main(int number1, int number2, int Difference)
 {
-	return (number1 - number2);
+	Difference = number1 - number2;
+
+	return (Difference);
 }
