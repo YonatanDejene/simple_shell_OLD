@@ -1,16 +1,6 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-
-#ifndef _SHELL_H_
-
-#define _SHELL_H_
-
- 
-
 #include <sys/wait.h>
 
 #include <sys/stat.h>
@@ -196,11 +186,8 @@ typedef struct passinfo
  
 
 #define INFO_INIT \
-
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
-
-                        0, 0, 0}
-
+	0, 0, 0}
  
 
 /**
@@ -388,7 +375,7 @@ list_t *nd_strt_wt(list_t *, char *, char);
 ssize_t get_nd_indx(list_t *, list_t *);
 
 
-char *get_env(info_t *, const char *);
+char *_get_env(info_t *, const char *);
 
 int my_env(info_t *);
 
@@ -423,6 +410,3 @@ void fr_ls(list_t **);
  
 
 #endif
-
-//void prompt(char **ax, char **envi);
-//#endif
