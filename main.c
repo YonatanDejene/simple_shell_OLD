@@ -88,7 +88,7 @@ int main(int ac, char **av)
 
             p_env_list(info);
 
-            rd_hstr(info);
+            //rd_hstr(info);
 
             msh(info, av);
 
