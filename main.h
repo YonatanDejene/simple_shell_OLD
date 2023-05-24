@@ -177,7 +177,7 @@ void _setinf(info_t *, char **);
 
 int set_env(info_t *, char *, char *);
 int unset_env(info_t *, char *);
-char **get_env(info_t *);
+char **get_envron(info_t *);
 
 int wr_hstr(info_t *info);
 int rd_hstr(info_t *info);
