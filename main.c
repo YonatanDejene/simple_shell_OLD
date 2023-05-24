@@ -86,7 +86,7 @@ int main(int ac, char **av)
 
             }
 
-            p_env_list(info);
+            //p_env_list(info);
 
             //rd_hstr(info);
 
