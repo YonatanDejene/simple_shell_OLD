@@ -1,30 +1,29 @@
 #include "main.h"
 
 /**
- * msh - Main shell.
- * @info: Parameter & return info structure.
- * @av: Argument vector from main().
+ * msh - main shell loop
+ * @info: the parameter & return info struct
+ * @av: the argument vector from main()
  *
- * Return: If successful 0, if not 1.
+ * Return: 0 on success, 1 on error, or error code
  */
-
 int msh(info_t *info, char **av)
 {
-	ssize_t r = 0;
-	int builtin_ret = 0;
+	ssize_t k = 0;
+	int builtin = 0;
 
-	while (r != -1 && builtin_ret != -2)
+	while (k != -1 && builtin != -2)
 	{
 		clr_inf(info);
 		if (intractv(info))
 			_puts("$ ");
-		e_putchar(BUF_FLUSH);
-		r = _gtinput(info);
-		if (r != -1)
+		_putchar(BUF_FLUSH);
+		k = _gtinput(info);
+		if (k != -1)
 		{
 			_setinf(info, av);
-			builtin_ret = fnd_bltin(info);
-			if (builtin_ret == -1)
+			builtin = fnd_bltin(info);
+			if (builtin == -1)
 				_fndcmd(info);
 		}
 		else if (intractv(info))
@@ -35,28 +34,29 @@ int msh(info_t *info, char **av)
 	_frinfo(info, 1);
 	if (!intractv(info) && info->status)
 		exit(info->status);
-	if (builtin_ret == -2)
+	if (builtin == -2)
 	{
 		if (info->err_num == -1)
 			exit(info->status);
 		exit(info->err_num);
 	}
-	return (builtin_ret);
+	return (builtin);
 }
 
 /**
- * fnd_bltin - Finds Builtin comds.
- * @info: Parameter & return info structure.
+ * find_builtin - finds a builtin command
+ * @info: the parameter & return info struct
  *
- * Return: -1 When builtin doesn’t exist,
- * 0 When builtin executed successfully,
- * 1 When builtin found but not successful,
- * 2 When builtin signals exit().
+ * Return: -1 if builtin not found,
+ *			0 if builtin executed successfully,
+ *			1 if builtin found but not successful,
+ *			-2 if builtin signals exit()
  */
-int fnd_bltin(info_t *info)
+int find_builtin(info_t *info)
 {
-	int j, built_in_ret = -1;
-	builtin_table builtintbl[] = {
+	int i, built_in_ret = -1;
+	builtin_table builtintbl[] = 
+	{
 		{"exit", myext},
 		{"env", my_env},
 		{"help", _myhelp},
@@ -68,26 +68,26 @@ int fnd_bltin(info_t *info)
 		{NULL, NULL}
 	};
 
-	for (j = 0; builtintbl[j].type; j++)
-		if (str_cmp(info->argv[0], builtintbl[j].type) == 0)
+	for (i = 0; builtintbl[i].type; i++)
+		if (strcmp(info->argv[0], builtintbl[i].type) == 0)
 		{
 			info->line_count++;
-			built_in_ret = builtintbl[j].func(info);
+			built_in_ret = builtintbl[i].func(info);
 			break;
 		}
 	return (built_in_ret);
 }
 
 /**
- * _fndcmd - Finds comnd in PATH.
- * @info: Parameter & return info struct.
+ * find_cmd - finds a command in PATH
+ * @info: the parameter & return info struct
  *
- * Return: Nothing.
+ * Return: void
  */
-void _fndcmd(info_t *info)
+void find_cmd(info_t *info)
 {
 	char *path = NULL;
-	int j, l;
+	int i, k;
 
 	info->path = info->argv[0];
 	if (info->linecount_flag == 1)
@@ -95,10 +95,10 @@ void _fndcmd(info_t *info)
 		info->line_count++;
 		info->linecount_flag = 0;
 	}
-	for (j = 0, l = 0; info->arg[j]; j++)
-		if (!is_delim(info->arg[j], " \t\n"))
-			l++;
-	if (!l)
+	for (i = 0, k = 0; info->arg[i]; i++)
+		if (!is_delim(info->arg[i], " \t\n"))
+			k++;
+	if (!k)
 		return;
 
 	path = fnd_pth(info, get_env(info, "PATH="), info->argv[0]);
@@ -110,7 +110,7 @@ void _fndcmd(info_t *info)
 	else
 	{
 		if ((intractv(info) || get_env(info, "PATH=")
-					|| info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
+			|| info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
 			_frkcmd(info);
 		else if (*(info->arg) != '\n')
 		{
@@ -121,10 +121,10 @@ void _fndcmd(info_t *info)
 }
 
 /**
- * _frkcmd - Forks executive thread to run command.
- * @info: Parameter & return info structure.
+ * fork_cmd - forks a an exec thread to run cmd
+ * @info: the parameter & return info struct
  *
- * Return: Nothing.
+ * Return: void
  */
 void _frkcmd(info_t *info)
 {
@@ -133,18 +133,20 @@ void _frkcmd(info_t *info)
 	child_pid = fork();
 	if (child_pid == -1)
 	{
+		/* TODO: PUT ERROR FUNCTION */
 		perror("Error:");
 		return;
 	}
 	if (child_pid == 0)
 	{
-		if (execve(info->path, info->argv, get_env(info)) == -1)
+		if (execve(info->path, info->argv, get_envron(info)) == -1)
 		{
 			_frinfo(info, 1);
 			if (errno == EACCES)
 				exit(126);
 			exit(1);
 		}
+		/* TODO: PUT ERROR FUNCTION */
 	}
 	else
 	{

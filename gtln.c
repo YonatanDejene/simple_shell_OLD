@@ -63,7 +63,7 @@ ssize_t _gtinput(info_t *info)
 	if (len)
 	{
 		j = i;
-		p = buff + i;
+		pp = buff + i;
 
 		chck_chn(info, buff, &j, i, len);
 		while (j < len)
