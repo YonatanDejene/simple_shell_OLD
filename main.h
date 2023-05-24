@@ -14,7 +14,7 @@
 
 
 #define CMD_OR		1
-#define CMD_NORM 	0
+#define CMD_NORM	0
 #define CMD_AND		2
 #define CMD_CHAIN	3
 
@@ -48,7 +48,6 @@ typedef struct liststr
 } list_t;
 
 /**
-
  * struct passinfo - Pseudo-arguements to pass into a function contained here.
  * @arg: String generated from getline.
  * @argv: Array of strings generated from arg.
@@ -107,7 +106,7 @@ typedef struct builtin
 	char *type;
 	int (*func)(info_t *);
 } builtin_table;
- 
+
 int is_cmd(info_t *, char *);
 char *dp_char(char *, int, int);
 char *fnd_pth(info_t *, char *, char *);
