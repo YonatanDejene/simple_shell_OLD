@@ -44,7 +44,7 @@ int msh(info_t *info, char **av)
 }
 
 /**
- * find_builtin - finds a builtin command
+ * fnd_bltin - finds a builtin command
  * @info: the parameter & return info struct
  *
  * Return: -1 if builtin not found,
@@ -52,7 +52,7 @@ int msh(info_t *info, char **av)
  *			1 if builtin found but not successful,
  *			-2 if builtin signals exit()
  */
-int find_builtin(info_t *info)
+int fnd_bltin(info_t *info)
 {
 	int i, built_in_ret = -1;
 	builtin_table builtintbl[] = 
@@ -79,12 +79,12 @@ int find_builtin(info_t *info)
 }
 
 /**
- * find_cmd - finds a command in PATH
+ * _fndcmd - finds a command in PATH
  * @info: the parameter & return info struct
  *
  * Return: void
  */
-void find_cmd(info_t *info)
+void _fndcmd(info_t *info)
 {
 	char *path = NULL;
 	int i, k;
@@ -121,7 +121,7 @@ void find_cmd(info_t *info)
 }
 
 /**
- * fork_cmd - forks a an exec thread to run cmd
+ * _frkcmd - forks a an exec thread to run cmd
  * @info: the parameter & return info struct
  *
  * Return: void

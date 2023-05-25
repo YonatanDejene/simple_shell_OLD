@@ -7,7 +7,7 @@
  */
 int my_env(info_t *info)
 {
-	prnt_ls_str(info->env);
+	prnt_ls(info->env);
 	return (0);
 }
 

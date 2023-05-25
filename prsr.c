@@ -1,29 +1,6 @@
 #include "main.h"
 
 /**
- * is_cmd - Determines if a given file is an executable command.
- * @info: Info structure.
- * @path: Path to the file.
- *
- * Return: if true 1, 0 if not.
- */
-
-int is_cmd(info_t *info, char *path)
-{
-	struct stat st;
-
-	(void)info;
-	if (!path || stat(path, &st))
-		return (0);
-
-	if (st.st_mode & S_IFREG)
-	{
-		return (1);
-	}
-	return (0);
-}
-
-/**
  * dp_char - Doubles characters.
  * @pathstr: PATH string.
  * @start: Starting indx.
