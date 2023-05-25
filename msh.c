@@ -55,8 +55,7 @@ int msh(info_t *info, char **av)
 int fnd_bltin(info_t *info)
 {
 	int i, built_in_ret = -1;
-	builtin_table builtintbl[] = 
-	{
+	builtin_table builtintbl[] = {
 		{"exit", myext},
 		{"env", my_env},
 		{"help", _myhelp},

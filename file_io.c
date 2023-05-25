@@ -103,7 +103,7 @@ int rd_hstr(info_t *info)
 }
 
 /**
- * build_history_list - adds entry to a history linked list
+ * bld_hstr_ls - adds entry to a history linked list
  * @info: Structure containing potential arguments. Used to maintain
  * @buf: buffer
  * @linecount: the history linecount, histcount
@@ -124,7 +124,7 @@ int bld_hstr_ls(info_t *info, char *buf, int linecount)
 }
 
 /**
- * renumber_history - renumbers the history linked list after changes
+ * renum_hstr - renumbers the history linked list after changes
  * @info: Structure containing potential arguments. Used to maintain
  *
  * Return: the new histcount
